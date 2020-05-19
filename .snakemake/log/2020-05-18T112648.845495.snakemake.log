@@ -1,0 +1,35 @@
+Building DAG of jobs...
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	4	count_words
+	1	make_archive
+	4	make_plot
+	1	zipf_test
+	11
+
+[Mon May 18 11:26:48 2020]
+rule count_words:
+    input: source/wordcount.py, data/last.txt
+    output: processed_data/last.dat
+    log: processed_data/last.log
+    jobid: 8
+    wildcards: file=last
+
+[Mon May 18 11:26:49 2020]
+Error in rule count_words:
+    jobid: 8
+    output: processed_data/last.dat
+    log: processed_data/last.log (check log file(s) for error message)
+    shell:
+        
+        echo "Running source/wordcount.py with 1 cores on data/last.txt." &> processed_data/last.log &&
+            python source/wordcount.py data/last.txt processed_data/last.dat >> processed_data/last.log 2>&1
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: C:\Users\arch9809\Desktop\Projects\CodeRefinary\word-count-AC\.snakemake\log\2020-05-18T112648.845495.snakemake.log
