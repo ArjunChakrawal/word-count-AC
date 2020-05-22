@@ -3,7 +3,7 @@
 Purpose
 =======
 
-Learn read the docs
+Learn read the docs and link a github repo with Readthedocs service. 
 
 
 Zipf's law
